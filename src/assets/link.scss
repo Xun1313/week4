@@ -1,0 +1,29 @@
+.link {
+  display: flex;
+  justify-content: center;
+  @include lapTop {
+    justify-content: flex-end;
+  }
+  width: 85%;
+  margin: 20px auto 30px;
+  &-links {
+    cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 10%;
+    transition: 0.5s all;
+  }
+  &-prev {
+    border: 1px solid gray;
+    margin-right: 20px;
+    &:hover {
+      background-color: darken(white, 10%);
+    }
+  }
+  &-next {
+    color: white;
+    background-color: $next-button;
+    &:hover {
+      background-color: darken($next-button, 10%);
+    }
+  }
+}
