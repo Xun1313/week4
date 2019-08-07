@@ -74,7 +74,17 @@ export default {
     nextHandler() {
       if (this.isCheck > 0 || this.isCheck === 0) {
         const payWay = this.pay[this.isCheck].title.split(" ")[0];
-        this.$router.push(`/checkout/${payWay}`);
+        let way=''
+        if (payWay==='超商取貨') {
+          way='store'
+        }else if(payWay==='信用卡'){
+          way='card'
+        }else if(payWay==='LINE'){
+          way='line'
+        }else{
+          way='atm'
+        }
+        this.$router.push(`/checkout/${way}`);
       }
     }
   }

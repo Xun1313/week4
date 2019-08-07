@@ -17,9 +17,31 @@ export default new Router({
           component: () => import(/* webpackChunkName: "pay-way" */ './views/pay-way.vue'),
         },
         {
-          path: 'checkout/:way',
+          path: 'checkout',
           name: 'checkout',
           component: () => import(/* webpackChunkName: "checkout" */ './views/checkout.vue'),
+          children: [
+            {
+              path: 'store',
+              name: 'store',
+              component: () => import(/* webpackChunkName: "store" */ './views/store.vue'),
+            },
+            {
+              path: 'card',
+              name: 'card',
+              component: () => import(/* webpackChunkName: "card" */ './views/card.vue'),
+            },
+            {
+              path: 'line',
+              name: 'line',
+              component: () => import(/* webpackChunkName: "line" */ './views/line.vue'),
+            },
+            {
+              path: 'atm',
+              name: 'atm',
+              component: () => import(/* webpackChunkName: "atm" */ './views/atm.vue'),
+            },
+          ],
         },
         {
           path: 'done',

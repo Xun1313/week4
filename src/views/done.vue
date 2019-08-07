@@ -31,16 +31,33 @@
             <td>281</td>
           </tr>
           <tr>
-            <td colspan="3" align='right'>運費</td>
+            <td colspan="3" align="right">運費</td>
             <td>60元</td>
           </tr>
           <tr>
-            <td colspan="3" align='right'>共2品項、總計</td>
+            <td colspan="3" align="right">共2品項、總計</td>
             <td>NT$ 940</td>
           </tr>
         </tbody>
       </table>
-      
+    </div>
+
+    <div class="success-get">
+      <div class="success-get-title">取貨資訊</div>
+      <div class="success-get-item">
+        <div class="success-get-item-name">取貨店名</div>
+        <div class="success-get-item-value">復興</div>
+      </div>
+      <div class="success-get-item">
+        <div class="success-get-item-name">取貨地址</div>
+
+        <div class="success-get-item-value">123</div>
+      </div>
+    </div>
+
+    <div class="success-btn">
+      <div class="success-btn-member">會員專區</div>
+      <div class="success-btn-back">返回首頁</div>
     </div>
   </div>
 </template>
@@ -88,9 +105,55 @@ export default {
       height: 150px;
     }
   }
-  &-list{
-    background-color:$background;
+  &-list {
+    background-color: $background;
     padding: 20px;
+  }
+  &-get {
+    background-color: $background;
+    padding: 20px;
+    &-item {
+      opacity: .7;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0,.3);
+      &-name {
+        margin-right: 20px;
+        @include lapTop {
+          margin-right: 80px;
+        }
+      }
+    }
+  }
+  &-btn{
+    margin:20px 0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-member{
+      border: 1px solid rgba(0, 0, 0,.3);
+      margin-right: 10px;
+      padding: 15px 25px;
+      border-radius: 10%;
+      cursor: pointer;
+      transition: .5s all;
+      &:hover{
+        background-color: darken(white, 10%)
+      }
+    }
+    &-back{
+      color: white;
+      background-color:$next-button;
+      padding: 15px 25px;
+      border-radius: 10%;
+      cursor: pointer;
+      &:hover{
+        background-color: darken($next-button, 10%)
+      }
+    }
+
   }
 }
 </style>
