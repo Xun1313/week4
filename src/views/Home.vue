@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="list">
+    <div class="list" v-if="list">
       <div class="list-primary">
         <div class="list-primary-title">訂單明細</div>
         <div class="list-primary-code">(JC293016)</div>
@@ -41,11 +41,22 @@
 
     <router-view></router-view>
   </div>
-  <!--
-    <img src="../assets/card/icon_arrow-1.svg">
-    <img src="../assets/card/step3_active.svg" alt="">
-  <img src="../assets/card/icon_arrow-2.svg">-->
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      list:true,
+    }
+  },
+  mounted() {
+    this.$bus.$on("list", (visible) => {
+      this.list=visible
+    });
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 @import "../assets/_variables.scss";

@@ -105,14 +105,17 @@ export default {
   data() {
     return {
       infoBtn: false,
-      confirmBtn: false
+      confirmBtn: false,
+      payWay:''
     };
   },
   methods: {
     nextHandler() {
       this.$validator.validate().then(valid => {
         if (valid) {
-          this.$router.push(`/done`);
+          const index=this.payWay.split('/').length-1
+          const path=this.payWay.split('/')[index]
+          this.$router.push(`/done/${path}-info`);
         } else {
           console.log("欄位不完整");
         }
@@ -120,8 +123,7 @@ export default {
     }
   },
   mounted() {
-    this.payWay = this.$route.params.way;
-    /* this.$bus.$emit("push", "已加入購物車", "danger"); */
+    this.payWay = this.$route.path;
   }
 };
 </script>

@@ -12,7 +12,11 @@
           :class="[isCheck===index?'is-check':'no-check']"
           @click="isCheck=index"
         ></div>
-        <div class="pay-item-pic" :style="`background-image:url(${item.pic})`"></div>
+        <div
+          class="pay-item-pic"
+          :class="'pic'+(index+1)"
+          :style="`background-image:url(${item.pic})`"
+        ></div>
         <div class="pay-item-describe describe">
           <div class="describe-title">{{item.title}}</div>
           <div class="describe-word">{{item.word}}</div>
@@ -74,15 +78,15 @@ export default {
     nextHandler() {
       if (this.isCheck > 0 || this.isCheck === 0) {
         const payWay = this.pay[this.isCheck].title.split(" ")[0];
-        let way=''
-        if (payWay==='超商取貨') {
-          way='store'
-        }else if(payWay==='信用卡'){
-          way='card'
-        }else if(payWay==='LINE'){
-          way='line'
-        }else{
-          way='atm'
+        let way = "";
+        if (payWay === "超商取貨") {
+          way = "store";
+        } else if (payWay === "信用卡") {
+          way = "card";
+        } else if (payWay === "LINE") {
+          way = "line";
+        } else {
+          way = "atm";
         }
         this.$router.push(`/checkout/${way}`);
       }
@@ -95,7 +99,7 @@ export default {
 @import "../assets/_variables.scss";
 @import "../assets/_mixin.scss";
 @import "../assets/_grid.scss";
-@import '../assets/link.scss';
+@import "../assets/link.scss";
 .pay {
   width: 90%;
   margin: 20px auto;
@@ -108,20 +112,43 @@ export default {
     margin: 5px 0;
     padding: 15px;
     font-size: 18px;
-    * {
-      margin: 0 15px;
+    /* * {
+      margin: 0 20px 0 0;
+    } */
+    &-check {
+      margin-right: 30px;
     }
     &-pic {
       @extend %bg;
-      width: 80px;
-      height: 80px;
+      margin-right: 20px;
     }
     .describe {
+      margin-right: 20px;
       &-word {
         opacity: 0.7;
       }
     }
   }
+}
+.pic1 {
+  width: 85px;
+  height: 65px;
+}
+.pic2 {
+  width: 85px;
+  height: 57px;
+}
+.pic3 {
+  width: 100px;
+  height: 25px;
+}
+.pic4 {
+  width: 145px;
+  height: 45px;
+}
+.pic5 {
+  width: 70px;
+  height: 50px;
 }
 .is-check,
 .no-check {
@@ -154,5 +181,4 @@ export default {
     margin: 5px 0;
   }
 }
-
 </style>

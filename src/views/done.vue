@@ -19,24 +19,24 @@
         </thead>
         <tbody>
           <tr>
-            <td>長板無袖洋裝</td>
+            <td class="item">長板無袖洋裝</td>
             <td>1</td>
             <td>綠色</td>
             <td>599元</td>
           </tr>
           <tr>
-            <td>大球氣質銀飾耳環(針式)</td>
+            <td class="item">大球氣質銀飾耳環(針式)</td>
             <td>1</td>
             <td>紅色</td>
             <td>281</td>
           </tr>
           <tr>
-            <td colspan="3" align="right">運費</td>
+            <td colspan="3" class="item2">運費</td>
             <td>60元</td>
           </tr>
           <tr>
-            <td colspan="3" align="right">共2品項、總計</td>
-            <td>NT$ 940</td>
+            <td colspan="3" class="item2">共2品項、總計</td>
+            <td class="sum">NT$ 940</td>
           </tr>
         </tbody>
       </table>
@@ -55,6 +55,8 @@
       </div>
     </div>
 
+    <router-view></router-view>
+
     <div class="success-btn">
       <div class="success-btn-member">會員專區</div>
       <div class="success-btn-back">返回首頁</div>
@@ -64,14 +66,12 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  }
-  /* mounted() {
-    vm.$bus.$on("push", (message, status = "warning") => {
-      vm.updateMessage(message, status);
-    });
-  }, */
+  mounted() {
+    this.$bus.$emit("list",false);
+  },
+  beforeDestroy() {
+    this.$bus.$emit("list",true);
+  },
 };
 </script>
 
@@ -113,12 +113,12 @@ export default {
     background-color: $background;
     padding: 20px;
     &-item {
-      opacity: .7;
+      opacity: 0.7;
       display: flex;
       align-items: center;
       padding: 10px 15px;
       margin-bottom: 15px;
-      border-bottom: 1px solid rgba(0, 0, 0,.3);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
       &-name {
         margin-right: 20px;
         @include lapTop {
@@ -127,33 +127,48 @@ export default {
       }
     }
   }
-  &-btn{
-    margin:20px 0 ;
+  &-btn {
+    margin: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    &-member{
-      border: 1px solid rgba(0, 0, 0,.3);
+    &-member {
+      border: 1px solid rgba(0, 0, 0, 0.3);
       margin-right: 10px;
       padding: 15px 25px;
       border-radius: 10%;
       cursor: pointer;
-      transition: .5s all;
-      &:hover{
-        background-color: darken(white, 10%)
+      transition: 0.5s all;
+      &:hover {
+        background-color: darken(white, 10%);
       }
     }
-    &-back{
+    &-back {
       color: white;
-      background-color:$next-button;
+      background-color: $next-button;
       padding: 15px 25px;
       border-radius: 10%;
       cursor: pointer;
-      &:hover{
-        background-color: darken($next-button, 10%)
+      &:hover {
+        background-color: darken($next-button, 10%);
       }
     }
-
   }
+}
+th,
+td {
+  white-space: nowrap;
+  text-align: center;
+}
+.item {
+  white-space: pre-wrap;
+  text-align: left;
+}
+.item2 {
+  text-align: right;
+}
+.sum {
+  font-size: 30px;
+  font-weight: bold;
 }
 </style>

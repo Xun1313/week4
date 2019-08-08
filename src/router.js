@@ -47,6 +47,28 @@ export default new Router({
           path: 'done',
           name: 'done',
           component: () => import(/* webpackChunkName: "done" */ './views/done.vue'),
+          children: [
+            {
+              path: 'store-info',
+              name: 'store-info',
+              component: () => import(/* webpackChunkName: "store-info" */ './views/store-info.vue'),
+            },
+            {
+              path: 'card-info',
+              name: 'card-info',
+              component: () => import(/* webpackChunkName: "card-info" */ './views/card-info.vue'),
+            },
+            {
+              path: 'line-info',
+              name: 'line-info',
+              component: () => import(/* webpackChunkName: "line-info" */ './views/line-info.vue'),
+            },
+            {
+              path: 'atm-info',
+              name: 'atm-info',
+              component: () => import(/* webpackChunkName: "atm-info" */ './views/atm-info.vue'),
+            },
+          ],
         },
       ],
     },

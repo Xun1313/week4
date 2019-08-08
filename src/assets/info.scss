@@ -1,0 +1,16 @@
+@import "../assets/_variables.scss";
+@import "../assets/_grid.scss";
+.info {
+  background-color: $background;
+  padding: 25px;
+  &-all {
+    opacity: 0.7;
+    @include lapTop {
+      display: flex;
+    }
+    &-item {
+      display: flex;
+      margin: 15px;
+    }
+  }
+}
